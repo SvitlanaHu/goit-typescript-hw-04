@@ -1,4 +1,20 @@
-import React, {useReducer} from "react";
+import React, { useReducer } from "react";
+
+// Визначаємо тип RequestStep
+type RequestStep = "idle" | "start" | "pending" | "finished";
+
+// Визначаємо тип State
+interface State {
+  isRequestInProgress: boolean;
+  requestStep: RequestStep;
+}
+
+// Визначаємо тип Action
+type Action =
+  | { type: "START_REQUEST" }
+  | { type: "PENDING_REQUEST" }
+  | { type: "FINISH_REQUEST" }
+  | { type: "RESET_REQUEST" };
 
 const initialState: State = {
   isRequestInProgress: false,
